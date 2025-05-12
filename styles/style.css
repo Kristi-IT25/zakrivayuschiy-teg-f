@@ -86,12 +86,12 @@
   position: relative;
 }
 
-.card-images { 
+.card-images {
   display: block;
   object-fit: cover;
   inline-size: 100%;
   block-size: 100%;
-  aspect-ratio: 1 / 1; 
+  aspect-ratio: 1 / 1;
 }
 
 .images-grayscale {
@@ -102,7 +102,7 @@
   filter: grayscale(0.5) opacity(0.9);
 }
 
-.images-saturate{
+.images-saturate {
   filter: saturate(200%) brightness(200%);
 }
 
@@ -165,7 +165,7 @@
   padding-block-end: 25px;
 }
 
-.button { 
+.button {
   position: relative;
   display: flex;
   justify-content: center;
@@ -184,8 +184,8 @@
   display: block;
   background-color: var(--color-button);
   transition: transform 0.5s ease-in-out;
-  transform: translateX(-100%); /*Сдвиг /или scale(0-1)*/
-  transform-origin: left; 
+  transform: translateX(-100%);/*Сдвиг /или scale(0-1)*/
+  transform-origin: left;
   mix-blend-mode: difference;/*Плавность*/
 }
 
@@ -299,7 +299,7 @@ dialog::backdrop {
   inline-size: clamp(12.375rem, 11.5827rem + 3.3803vw, 14.625rem);
 }
 
-.dialog__button{ 
+.dialog__button {
   overflow: hidden;
   background-color: transparent;
   inline-size: 257px;
