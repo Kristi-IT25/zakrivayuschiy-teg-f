@@ -7,10 +7,355 @@
 ✦ card__icon-button — для кнопки, оборачивающей иконку
 ✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
 ✦ button__text — для обозначения текстового элемента внутри кнопки
-
 */
 
 .page {
+  margin: 0 auto;
+  padding: 100px 0;
+  color: var(--color-main);
+  font-family: var(--font-page, sans-serif);
+  background-color: var(--color-bg);
+  background-image: var(--background-im);
+  background-size: cover;
+  background-attachment: fixed;
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-variation-settings: var(--wght-m, 400);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 0 auto;
+  margin-block-end: 100px;
+  border: 2px solid var(--color-main);
+  text-align: center;
+  background-color: var(--color-bg);
+}
+
+.header-clamp {
+  padding: 120px 14px;
+  inline-size: var(--width-clamp);
+}
+
+.logo {
+  font-size: clamp(3.0625rem, 1.9087rem + 4.9231vw, 4.0625rem);
+}
+
+.logo__text {
+  font-size: clamp(0.875rem, 0.226rem + 2.7692vw, 1.4375rem);
+  text-transform: uppercase;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  inline-size: var(--width-clamp);
+}
+
+.card {
+  position: relative;
+  margin-block-end: 50px;
+  border: 2px solid var(--color-main);
+  background-color: var(--color-bg);
+  inline-size: var(--width-clamp);
+}
+
+.card-clamp {
+  inline-size: var(--width-clamp);
+}
+
+.card__title {
+  padding: 4px 10px 6px;
+  font-family: var(--font-variation);
+  font-size: var(--font-size-accent);
+  font-variation-settings: 'wght' var(--wght-t);
+}
+
+.card__title-padding {
+  padding-block-start: 3.5px;
+  padding-block-end: 5.5px;
+}
+
+.wrapper-card {
+  position: relative;
+}
+
+.card-images { 
+  display: block;
+  object-fit: cover;
+  inline-size: 100%;
+  block-size: 100%;
+  aspect-ratio: 1 / 1; 
+}
+
+.images-grayscale {
+  filter: grayscale(0.2);
+}
+
+.images-opacity {
+  filter: grayscale(0.5) opacity(0.9);
+}
+
+.images-saturate{
+  filter: saturate(200%) brightness(200%);
+}
+
+.images-rotate {
+  filter: hue-rotate(50deg) contrast(110%);
+}
+
+.images-invert {
+  filter: invert(0.7);
+}
+
+.images-sepia {
+  filter: sepia(80%);
+}
+
+.images-blur {
+  filter: blur(0.5rem);
+}
+
+.images-hue-rotate {
+ filter: hue-rotate(80deg) opacity(0.7) blur(0.1rem);
+}
+
+.watermark {
+  content: '';
+  position: absolute;
+  font-family: var(--font-page);
+  font-weight: var(--wght-m);
+  font-size: var(--font-size);
+  text-shadow: 1px 1px var(--stroke-color);
+  inset-inline-end: 12px;
+  inset-block-start: 25px;
+  mix-blend-mode: hard-light;
+}
+
+@supports((text-stroke: 1px var(--stroke-color))) or (-webkit-text-stroke: 1px var(--stroke-color)) {
+  .watermark {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--stroke-color);
+    text-stroke: 1px var(--stroke-color);
+  }
+}
+
+.card__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 27px;
+  margin: 28.5px 26px 24px;
+  font-family: var(--font-variation);
+  font-size: var(--font-size-accent);
+  line-height: 21px;
+}
+
+.wrapper-button {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  padding-inline-end: 25px;
+  padding-block-end: 25px;
+}
+
+.button { 
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--color-main);
+  overflow-x: hidden;
+  color: var(--color-main);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-color: var(--color-button);
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(-100%); /*Сдвиг /или scale(0-1)*/
+  transform-origin: left; 
+  mix-blend-mode: difference;/*Плавность*/
+}
+
+.button:hover::after {
+  transform: translateX(0);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0 var(--color-main);
+  transition: box-shadow 0.3s ease; /*Плавность для тени*/
+}
+
+.card__icon-button {
+  border: 2px solid transparent;
+  padding: 0; /*Чтобы сбросить высоту рамки через tab*/
+  background-color: transparent;
+}
+
+.card__icon-button:hover {
+  cursor: pointer;
+}
+
+.card__icon-button:focus {
+  border: none;
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border: 2px solid var(--color-main);
+  transition: border 0.3s ease; /*Плавность*/
+}
+
+.like-icon {
+  inline-size: 39px;
+  block-size: 36px;
+}
+
+.card__like-button {
+  position: relative;
+  border: 2px solid var(--color-main);
+  cursor: pointer;
+  inline-size: 130px;
+  block-size: 38px;
+}
+
+.button__text {
+  font-weight: var(--wght-m);
+  font-size: var(--font-size);
+  line-height: 90%;
+}
+
+.section__dialog-box {
+  margin-block-start: 2px;
+}
+
+.button-blue {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-inline-start: 34.5px;
+  margin-inline-end: 34.5px;
+  background-color: var(--color-bg);
+  inline-size: clamp(19.125rem, 18.4868rem + 2.723vw, 20.9375rem);
+  block-size: clamp(5.25rem, 5.8882rem + -2.723vw, 3.4375rem);
+}
+
+.dialog {
+  inline-size: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
+}
+
+.dialog[open] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  overflow-x: hidden;
+  transition: opacity 0.3s ease-in-out;
+  inline-size: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
+  min-block-size: 193px;
+}
+
+.dialog:not([open]) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.3);
+  backdrop-filter: blur(7px);
+}
+
+.dialog__content {
+  display: flex;
+  gap: 20px;
+
+}
+
+.dialog__subtitle {
+  justify-items: center;
+  font-family: var(--font-page);
+  font-size: var(--font-size);
+  line-height: 150%;
+  text-transform: uppercase;
+  inline-size: clamp(12.375rem, 11.5827rem + 3.3803vw, 14.625rem);
+}
+
+.dialog__button{ 
+  overflow: hidden;
+  background-color: transparent;
+  inline-size: 257px;
+  block-size: 38px;
+  cursor: pointer;
+}
+
+.button-close {
+  padding: 12.5px 114px;
+  overflow: hidden;
+  font-family: var(--font-page);
+  font-size: var(--font-size);
+  text-transform: uppercase;
+}
+
+@media (width <= 375px) {
+  .dialog__subtitle {
+    text-align: start;
+  }
+}
+
+@media (width >=768px) {
+.page {
+  padding-block-end: 103px;
+}
+
+.header-clamp {
+  padding: 128px 120.5px;
+}
+
+.card__title {
+  padding: 5px 24px 5px 10px;
+}
+
+.watermark {
+  inset-block-start: 27px;
+  inset-inline-end: 26px;
+}
+  
+.section__dialog-box {
+  margin-block-start: 0;
+}
+
+.button-blue {
+  flex-direction: row;
+  gap: 8px;
+  block-size: 55px;
+}
+
+.diskette {
+  inline-size: 21px;
+  block-size: 21px;
+}
+
+.dialog__content .diskette {
+  inline-size: 39px;
+  block-size: 39px;
+}
 }
