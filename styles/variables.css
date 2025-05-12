@@ -4,11 +4,10 @@
   --font-variation: 'Inter';
   --font-size: 14px;
   --font-size-accent: 18px;
-  --font-size-title: 65px;
   --wght-m: 400;
   --wght-t: 700;
   --width-clamp: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
-  --stroke-color: rgb(255, 255, 255, 0.5);
+  --stroke-color: rgb(255, 255, 255);
   --color-main: rgba(0, 0, 0, 1);
   --color-bg: rgb(255, 255, 255);
   --color-button: rgb(255, 255, 255);

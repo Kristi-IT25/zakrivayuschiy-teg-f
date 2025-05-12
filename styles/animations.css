@@ -39,51 +39,49 @@
   transition: fill 0.3s ease 0.06s;
 }
 
-.like-icon:not(.is-liked) .contour {
+.contour {
   transition: stroke 0.1s linear; 
   /* Линейное изменение цвета контура за 0.1с */
 }
 
 .main-body {
-  transition: fill 0.3s 0.05s ease;
+  fill: transparent;
+  transition: fill 0.3s ease;
 }
 
 .like-icon:hover .main-body {
   fill: var(--color-main);
-} 
-
-.like-icon:not(:hover) .main-body {
   transition: fill 0.3s 0.05s ease;
-  fill: transparent;
 }
 
 .like-icon:active .main-body {
   fill: var(--animation-fill-color);
+  transition: fill 0.3s 0.05s ease;
 }
 
 .like-icon.is-liked .main-body {
   fill: var(--animation-fill-color);
+  transition: fill 0.3s 0.05s ease;
 }
 
 .core {
-  transition: fill 0.3s ease;
+  fill: transparent;
+  transition: fill 0.3s 0.03s ease;
 }
 
 .like-icon:hover .core {
   fill: var(--color-main);
-}
-
-.like-icon:not(:hover) .core {
   transition: fill 0.3s 0.03s ease;
-  fill: transparent;
 }
 
 .like-icon:active .core {
   fill: var(--animation-fill-color);
+  transition: fill 0.3s 0.03s ease;
 }
 
 .like-icon.is-liked .core {
   fill: var(--animation-fill-color);
+  transition: fill 0.3s 0.03s ease;
 }
 
 .sparks {

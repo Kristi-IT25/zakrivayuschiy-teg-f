@@ -13,7 +13,7 @@
   margin: 0 auto;
   padding: 100px 0;
   color: var(--color-main);
-  font-family: var(--font-page, sans-serif);
+  font-family: var(--font-page, fantasy);
   background-color: var(--color-bg);
   background-image: var(--background-im);
   background-size: cover;
@@ -42,11 +42,13 @@
 
 .logo {
   font-size: clamp(3.0625rem, 1.9087rem + 4.9231vw, 4.0625rem);
+  text-wrap: nowrap;
 }
 
 .logo__text {
   font-size: clamp(0.875rem, 0.226rem + 2.7692vw, 1.4375rem);
   text-transform: uppercase;
+  text-wrap: nowrap;
 }
 
 .main-content {
@@ -72,7 +74,7 @@
 
 .card__title {
   padding: 4px 10px 6px;
-  font-family: var(--font-variation);
+  font-family: var(--font-variation, sans-serif);
   font-size: var(--font-size-accent);
   font-variation-settings: 'wght' var(--wght-t);
 }
@@ -88,7 +90,10 @@
 
 .card-images {
   display: block;
+  border-block-start: 2px solid var(--color-main);
+  border-block-end: 2px solid var(--color-main);
   object-fit: cover;
+  object-position: center;
   inline-size: 100%;
   block-size: 100%;
   aspect-ratio: 1 / 1;
@@ -129,7 +134,8 @@
 .watermark {
   content: '';
   position: absolute;
-  font-family: var(--font-page);
+  opacity: 0.5;
+  font-family: var(--font-page, fantasy);
   font-weight: var(--wght-m);
   font-size: var(--font-size);
   text-shadow: 1px 1px var(--stroke-color);
@@ -152,9 +158,9 @@
   justify-content: space-between;
   gap: 27px;
   margin: 28.5px 26px 24px;
-  font-family: var(--font-variation);
+  font-family: var(--font-variation, sans-serif);
   font-size: var(--font-size-accent);
-  line-height: 21px;
+  line-height: 1.3125rem;
 }
 
 .wrapper-button {
@@ -174,6 +180,7 @@
   overflow-x: hidden;
   color: var(--color-main);
   background-color: transparent;
+  transition: box-shadow 0.3s ease;
   cursor: pointer;
 }
 
@@ -184,9 +191,9 @@
   display: block;
   background-color: var(--color-button);
   transition: transform 0.5s ease-in-out;
-  transform: translateX(-100%);/*Сдвиг /или scale(0-1)*/
+  transform: translateX(-100%);
   transform-origin: left;
-  mix-blend-mode: difference;/*Плавность*/
+  mix-blend-mode: difference;/*Сдвиг /или scale(0-1)*/
 }
 
 .button:hover::after {
@@ -199,13 +206,13 @@
 
 .button:focus-visible {
   box-shadow: 2px 2px 0 var(--color-main);
-  transition: box-shadow 0.3s ease; /*Плавность для тени*/
 }
 
 .card__icon-button {
   border: 2px solid transparent;
   padding: 0; /*Чтобы сбросить высоту рамки через tab*/
   background-color: transparent;
+  transition: border 0.3s ease; /*Плавность*/
 }
 
 .card__icon-button:hover {
@@ -219,7 +226,6 @@
 
 .card__icon-button:focus-visible {
   border: 2px solid var(--color-main);
-  transition: border 0.3s ease; /*Плавность*/
 }
 
 .like-icon {
@@ -271,7 +277,6 @@
   overflow-x: hidden;
   transition: opacity 0.3s ease-in-out;
   inline-size: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
-  min-block-size: 193px;
 }
 
 .dialog:not([open]) {
@@ -280,19 +285,21 @@
 }
 
 dialog::backdrop {
-  background-color: rgb(0 0 0 / 0.3);
-  backdrop-filter: blur(7px);
+  background-color: rgb(0 0 0 / 0.75);
 }
 
 .dialog__content {
   display: flex;
   gap: 20px;
+}
 
+.diskette {
+  align-self: center;
 }
 
 .dialog__subtitle {
   justify-items: center;
-  font-family: var(--font-page);
+  font-family: var(--font-page, fantasy);
   font-size: var(--font-size);
   line-height: 150%;
   text-transform: uppercase;
@@ -300,17 +307,18 @@ dialog::backdrop {
 }
 
 .dialog__button {
+  border: 2px solid var(--color-main);
   overflow: hidden;
   background-color: transparent;
+  cursor: pointer;
   inline-size: 257px;
   block-size: 38px;
-  cursor: pointer;
 }
 
 .button-close {
   padding: 12.5px 114px;
   overflow: hidden;
-  font-family: var(--font-page);
+  font-family: var(--font-page, fantasy);
   font-size: var(--font-size);
   text-transform: uppercase;
 }
